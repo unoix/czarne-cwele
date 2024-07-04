@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjg158dtuxtlp"]
+[gd_scene load_steps=12 format=3 uid="uid://cjg158dtuxtlp"]
 
 [ext_resource type="Texture2D" uid="uid://2efeywacaa81" path="res://xd.png" id="1_m6j7m"]
 [ext_resource type="Script" path="res://player.gd" id="1_qqcm2"]
 [ext_resource type="Texture2D" uid="uid://bdfgrsu0ctgoi" path="res://xd2.png" id="3_7k061"]
+[ext_resource type="Texture2D" uid="uid://dufplgv5wgmqm" path="res://textures/hero/panserek1.png" id="4_u43a4"]
+[ext_resource type="Texture2D" uid="uid://rdocp1xwuuvy" path="res://textures/hero/panserek2.png" id="5_gnqt6"]
+[ext_resource type="Texture2D" uid="uid://c43gdmbmmnhft" path="res://textures/hero/panserek3.png" id="6_2jb25"]
+[ext_resource type="Texture2D" uid="uid://btwh1lcmrvog5" path="res://textures/hero/panserek4.png" id="7_ajrqx"]
+[ext_resource type="Texture2D" uid="uid://q0xcowwbvtib" path="res://textures/hero/panserek5.png" id="8_rdj15"]
+[ext_resource type="Texture2D" uid="uid://bv6tndv44ovw3" path="res://textures/hero/panserek7.png" id="9_kl3a3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhp7a"]
 animations = [{
@@ -14,12 +20,34 @@ animations = [{
 "texture": ExtResource("3_7k061")
 }],
 "loop": true,
-"name": &"default",
-"speed": 1.0
+"name": &"up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_u43a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gnqt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2jb25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ajrqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rdj15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kl3a3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 24.99
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_640ct"]
-size = Vector2(102, 102)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gip8r"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_qqcm2")
@@ -27,8 +55,12 @@ script = ExtResource("1_qqcm2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_qhp7a")
+animation = &"walk"
+frame_progress = 0.842306
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_640ct")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gip8r")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
