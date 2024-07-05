@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cabti8hl5pyv2"]
+
+[ext_resource type="Texture2D" uid="uid://0q4q6gvsnyyf" path="res://textures/czerwonakulka2.png" id="1_47w1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nowp5"]
+size = Vector2(32, 32)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_47w1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nowp5")
