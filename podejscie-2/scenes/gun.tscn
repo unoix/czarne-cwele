@@ -1,0 +1,59 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgu4l15k80ln"]
+
+[ext_resource type="Texture2D" uid="uid://bd8r2qbexy0tp" path="res://textures/m1911/m1911.png" id="1_oao4v"]
+[ext_resource type="Script" path="res://scenes/scripts/gun.gd" id="1_ws5wr"]
+[ext_resource type="Texture2D" uid="uid://bsv8mxu6ajg7o" path="res://textures/m1911/m1912.png" id="2_g4dpb"]
+[ext_resource type="Texture2D" uid="uid://qs3s0q2s8mn7" path="res://textures/m1911/m1913.png" id="3_n3mi4"]
+[ext_resource type="Texture2D" uid="uid://cr5fpg1siu41a" path="res://textures/m1911/m1914.png" id="4_5th8n"]
+[ext_resource type="Texture2D" uid="uid://bqj57iq8iv6tu" path="res://textures/m1911/m1915.png" id="5_oabb4"]
+[ext_resource type="Texture2D" uid="uid://mjdk2y8ej141" path="res://textures/m1911/m1916.png" id="6_2ug5c"]
+[ext_resource type="Texture2D" uid="uid://df7jachi2e150" path="res://textures/m1911/m1917.png" id="7_ixxb2"]
+[ext_resource type="Texture2D" uid="uid://dh6ujs3nk6ddb" path="res://textures/m1911/m1918.png" id="8_xlngk"]
+[ext_resource type="Texture2D" uid="uid://cqjly32xadbi0" path="res://textures/m1911/m1919.png" id="9_h7mgx"]
+[ext_resource type="Texture2D" uid="uid://c7gndw07j66fj" path="res://textures/m1911/m1920.png" id="10_m3hft"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnbd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oao4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g4dpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n3mi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5th8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oabb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2ug5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ixxb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xlngk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h7mgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m3hft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_ws5wr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_mnbd1")

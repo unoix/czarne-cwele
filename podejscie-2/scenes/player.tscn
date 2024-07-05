@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbh2bt1lmfqva"]
+[gd_scene load_steps=5 format=3 uid="uid://bbh2bt1lmfqva"]
 
 [ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_ex0uf"]
 [ext_resource type="Texture2D" uid="uid://ct3q2bxk0ouo5" path="res://textures/astronauta.png" id="1_vi5kr"]
+[ext_resource type="PackedScene" uid="uid://bgu4l15k80ln" path="res://scenes/gun.tscn" id="3_h8vbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xp88h"]
 size = Vector2(40, 136)
@@ -28,3 +29,5 @@ metadata/_edit_group_ = true
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 90)
 collision_mask = 128
+
+[node name="Gun" parent="." instance=ExtResource("3_h8vbj")]
