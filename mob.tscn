@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://cmdbbbopbsl1m"]
+[gd_scene load_steps=6 format=3 uid="uid://cmdbbbopbsl1m"]
 
-[node name="Mob" type="RigidBody2D"]
+[ext_resource type="Script" path="res://mob.gd" id="1_usf6o"]
+[ext_resource type="Texture2D" uid="uid://wok3ei051jq8" path="res://textures/opp/czerwonakulka1.png" id="2_eyf0c"]
+[ext_resource type="Texture2D" uid="uid://g5fyx7kb0f5o" path="res://textures/opp/czerwonakulka2.png" id="3_y645a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g06dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eyf0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y645a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogjtf"]
+radius = 81.4923
+
+[node name="Mob" type="RigidBody2D" groups=["opps"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_usf6o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_g06dd")
+frame = 1
+frame_progress = 0.695606
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ogjtf")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+metadata/_edit_group_ = true
