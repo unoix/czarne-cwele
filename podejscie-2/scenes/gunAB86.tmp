@@ -47,34 +47,22 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 20.0
+"speed": 5.0
 }]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_ws5wr")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 21.0
-offset_top = -29.0
-offset_right = 64.0
-offset_bottom = -6.0
-text = "
-g"
-
-[node name="Muzzle" type="RayCast2D" parent="."]
-position = Vector2(56, -6)
-target_position = Vector2(2000, 0)
-collision_mask = 2
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_mnbd1")
-frame = 9
-frame_progress = 1.0
+
+[node name="Muzzle" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(24, -6)
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 1.7
 one_shot = true
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwmmqh3hhk0jk"]
+[gd_scene load_steps=6 format=3 uid="uid://dwmmqh3hhk0jk"]
 
 [ext_resource type="Script" path="res://scenes/scripts/main.gd" id="1_g0kfg"]
 [ext_resource type="PackedScene" uid="uid://bbh2bt1lmfqva" path="res://scenes/player.tscn" id="1_la2r6"]
+[ext_resource type="PackedScene" uid="uid://cdplq81docri8" path="res://scenes/target.tscn" id="2_joxlf"]
 [ext_resource type="PackedScene" uid="uid://cabti8hl5pyv2" path="res://scenes/wall.tscn" id="2_krdlw"]
 
 [sub_resource type="Curve2D" id="Curve2D_a2mby"]
@@ -12,6 +13,7 @@ point_count = 5
 
 [node name="Main" type="Node"]
 script = ExtResource("1_g0kfg")
+op_scene = ExtResource("2_joxlf")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(792, 856)
@@ -41,3 +43,9 @@ scale = Vector2(32.56, 1)
 
 [node name="StartPos" type="Marker2D" parent="."]
 position = Vector2(616, 248)
+
+[node name="OppTimer" type="Timer" parent="."]
+wait_time = 0.191
+autostart = true
+
+[connection signal="timeout" from="OppTimer" to="." method="_on_opp_timer_timeout"]
