@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://iuuom3njvf26"]
+
+[ext_resource type="Texture2D" uid="uid://f8ijqhwyh4xo" path="res://textures/bullet.png" id="1_l3m77"]
+[ext_resource type="Script" path="res://scenes/scripts/bullet.gd" id="1_vosmd"]
+
+[sub_resource type="Gradient" id="Gradient_b5tpf"]
+offsets = PackedFloat32Array(0, 0.62987)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hq62o"]
+gradient = SubResource("Gradient_b5tpf")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_neykc"]
+radius = 4.0
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_vosmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_l3m77")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.998358, 0.647813, 0.256104, 1)
+texture = SubResource("GradientTexture2D_hq62o")
+texture_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_neykc")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_timer_timeout"]

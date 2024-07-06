@@ -1,11 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwmmqh3hhk0jk"]
+[gd_scene load_steps=5 format=3 uid="uid://dwmmqh3hhk0jk"]
 
 [ext_resource type="Script" path="res://scenes/scripts/main.gd" id="1_g0kfg"]
 [ext_resource type="PackedScene" uid="uid://bbh2bt1lmfqva" path="res://scenes/player.tscn" id="1_la2r6"]
 [ext_resource type="PackedScene" uid="uid://cabti8hl5pyv2" path="res://scenes/wall.tscn" id="2_krdlw"]
 
+[sub_resource type="Curve2D" id="Curve2D_a2mby"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 15.4791, -624, 0, 0, 0, 0, 15.4791, -216, 0, 0, 0, 0, 13.7592, -216, 0, 0, 0, 0, 13.7592, -624, 0, 0, 0, 0, 15.4791, -624)
+}
+point_count = 5
+
 [node name="Main" type="Node"]
 script = ExtResource("1_g0kfg")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(792, 856)
+scale = Vector2(32.56, 1)
+curve = SubResource("Curve2D_a2mby")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(15.4791, -624)
+rotation = 1.5708
 
 [node name="Player" parent="." instance=ExtResource("1_la2r6")]
 position = Vector2(0, 0)
@@ -19,6 +34,10 @@ scale = Vector2(20, 1)
 [node name="Wall2" parent="." instance=ExtResource("2_krdlw")]
 position = Vector2(216, 448)
 scale = Vector2(12.32, 1)
+
+[node name="Wall3" parent="." instance=ExtResource("2_krdlw")]
+position = Vector2(792, 856)
+scale = Vector2(32.56, 1)
 
 [node name="StartPos" type="Marker2D" parent="."]
 position = Vector2(616, 248)

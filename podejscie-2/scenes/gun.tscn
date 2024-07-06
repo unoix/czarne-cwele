@@ -45,7 +45,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_m3hft")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -57,3 +57,12 @@ script = ExtResource("1_ws5wr")
 texture_filter = 1
 position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_mnbd1")
+
+[node name="Muzzle" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(24, -6)
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 1.7
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
